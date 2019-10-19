@@ -1,5 +1,10 @@
 import 'package:dakgun/core/constants/app_constants.dart';
+import 'package:dakgun/ui/views/account_view.dart';
+import 'package:dakgun/ui/views/bookmark_view.dart';
+import 'package:dakgun/ui/views/cari_barengan_view.dart';
 import 'package:dakgun/ui/views/home_view.dart';
+import 'package:dakgun/ui/views/inbox_view.dart';
+import 'package:dakgun/ui/views/post_barengan_view.dart';
 import 'package:flutter/material.dart';
 
 class Router {
@@ -7,6 +12,31 @@ class Router {
     switch (settings.name) {
       case RoutePaths.Home:
         return MaterialPageRoute(builder: (_) => HomeView());
+      case RoutePaths.Bookmark:
+        return MaterialPageRoute(builder: (_) => BookmarkView());
+      case RoutePaths.Inbox:
+        return MaterialPageRoute(builder: (_) => InboxView());
+      case RoutePaths.Account:
+        return MaterialPageRoute(builder: (_) => AccountView());
+      case RoutePaths.CariBarengan:
+        return MaterialPageRoute(builder: (_) => CariBarenganView());
+      case RoutePaths.PostBarengan:
+        return PageRouteBuilder(
+            pageBuilder: (_, animation, secondaryAnimation) =>
+                PostBarenganView(),
+            transitionsBuilder: (_, animation, secondaryAnimation, child) {
+              var begin = Offset(0.0, 1.0);
+              var end = Offset.zero;
+              var curve = Curves.ease;
+
+              var tween =
+                  Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+              return SlideTransition(
+                position: animation.drive(tween),
+                child: child,
+              );
+            });
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(
