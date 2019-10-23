@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 void main() {
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
+    statusBarColor: Colors.white70,
+  ));
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
       .then((_) {
     runApp(Main());
@@ -16,11 +19,14 @@ class Main extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        primaryTextTheme: TextTheme(
-          title: TextStyle(color: primaryTextColor),
+        primaryColor: primaryColor,
+        appBarTheme: AppBarTheme(
+          color: Colors.white,
+          iconTheme: IconThemeData(color: Colors.black),
         ),
+        fontFamily: 'Muli',
       ),
-      initialRoute: RoutePaths.Home,
+      initialRoute: RoutePaths.App,
       onGenerateRoute: Router.generateRoute,
     );
   }

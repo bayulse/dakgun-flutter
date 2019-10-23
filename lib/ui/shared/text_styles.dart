@@ -16,5 +16,12 @@ const titleImgSmallStyle =
     TextStyle(color: Colors.white, fontSize: 10.0, fontWeight: FontWeight.bold);
 const descStyle = TextStyle(color: primaryTextColor, fontSize: 14.0);
 const descSmallStyle = TextStyle(color: primaryTextColor, fontSize: 12.0);
-const refCategoryStyle = TextStyle(
-    color: refCategoryTextColor, fontSize: 10.0, fontWeight: FontWeight.w800);
+const descSmallBoldStyle = TextStyle(
+    color: primaryTextColor, fontSize: 12.0, fontWeight: FontWeight.bold);
+const refCategoryStyle =
+    TextStyle(color: primaryColor, fontSize: 10.0, fontWeight: FontWeight.w800);
+const dateStyle = TextStyle(color: dateMeetingTextColor, fontSize: 12.0);
+const locationStyle = TextStyle(
+    color: dateMeetingTextColor,
+    fontSize: 12.0,
+    decoration: TextDecoration.underline);

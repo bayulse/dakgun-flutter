@@ -1,15 +1,21 @@
+import 'package:dakgun/app.dart';
 import 'package:dakgun/core/constants/app_constants.dart';
+import 'package:dakgun/core/models/post.dart';
 import 'package:dakgun/ui/views/account_view.dart';
 import 'package:dakgun/ui/views/bookmark_view.dart';
 import 'package:dakgun/ui/views/cari_barengan_view.dart';
 import 'package:dakgun/ui/views/home_view.dart';
 import 'package:dakgun/ui/views/inbox_view.dart';
+import 'package:dakgun/ui/views/info_barengan_view.dart';
 import 'package:dakgun/ui/views/post_barengan_view.dart';
+import 'package:dakgun/ui/views/user_view.dart';
 import 'package:flutter/material.dart';
 
 class Router {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
+      case RoutePaths.App:
+        return MaterialPageRoute(builder: (_) => App());
       case RoutePaths.Home:
         return MaterialPageRoute(builder: (_) => HomeView());
       case RoutePaths.Bookmark:
@@ -18,8 +24,16 @@ class Router {
         return MaterialPageRoute(builder: (_) => InboxView());
       case RoutePaths.Account:
         return MaterialPageRoute(builder: (_) => AccountView());
+      case RoutePaths.User:
+        var posts = settings.arguments as Post;
+        return MaterialPageRoute(
+            builder: (_) => UserView(user: posts.username));
       case RoutePaths.CariBarengan:
         return MaterialPageRoute(builder: (_) => CariBarenganView());
+      case RoutePaths.InfoBarengan:
+        var posts = settings.arguments as Post;
+        return MaterialPageRoute(
+            builder: (_) => InfoBarenganView(posts: posts));
       case RoutePaths.PostBarengan:
         return PageRouteBuilder(
             pageBuilder: (_, animation, secondaryAnimation) =>
